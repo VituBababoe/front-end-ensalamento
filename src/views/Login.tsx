@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Snackbar from '../components/Snackbar';
 import api from '../http/api';
-git config --global init.defaultBranch main
 
 interface SnackbarState {
   message: string;
@@ -59,34 +58,50 @@ export default function Login() {
 
   return (
     <div
-      className="w-screen h-screen"
+      className="w-screen h-screen flex justify-center items-center bg-cover bg-center"
       style={{
         backgroundImage: `url('/img/senac.png')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
     >
-      <div className="painel top-[50%] left-[36.5%] transform -translate-x-[10%] -translate-y-[50%] w-[30%] h-[65vh] flex bg-[#EF871E] rounded-[15px] justify-center items-center relative">
+      <div className="painel w-[30vw] h-[65vh] flex flex-col space-y-2 space-x-[3vw] bg-[#EF871E] rounded-[15px] justify-center items-start ">
+        <div className="flex space-x-8 ml-[5.5vw]">
+          <img src="/img/logo.png" alt="" className=" w-[8vw] h-[16vh] flex " />
+          <div className="barra w-[3px] h-[110px] bg-white "></div>
+          <span className="text-[20px] text-white font-chagaone h-[50x]">
+            ÁREA <br />
+            DE <br />
+            LOGIN
+          </span>
+        </div>
+        <h5 className=" top-[30%]  font-gillsans text-white">EMAIL</h5>
         <input
           type="text"
           placeholder="Informe seu email aqui..."
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-[80%] h-[5vh] top-[34%] left-[10%] border-none rounded-[8px] pl-[8px] absolute "
+          className="w-[80%] h-[5vh]  border-none rounded-[8px] pl-[8px] outline-none  "
         />
+        <h4 className="  font-[20px] font-gillsans text-white ">SENHA</h4>
         <input
           type="password"
           placeholder="Informe sua senha aqui..."
           value={senha}
           onChange={(e) => setSenha(e.target.value)}
-          className="w-[80%] h-[5vh] top-[49%] left-[10%] border-none rounded-[8px] pl-[8px] absolute"
+          className="w-[80%] h-[5vh] border-none rounded-[8px] pl-[8px] outline-none"
         />
-        <button
-          onClick={login}
-          className="w-[35%] h-[6vh] top-[70%] left-[33%] pointer bg-[#00528F] border-none rounded-[10px] text-white text-[20px] absolute "
-        >
-          LOGAR
-        </button>
+        <a href="#" className="font-gillsans ">
+          Esqueceu sua senha?
+        </a>
+        <div className="w-[35vw] h-[6vh] flex justify-center">
+          <button
+            onClick={login}
+            className="flex w-[35%] h-[6vh] ml-[-10vw] pointer bg-[#00528F] border-none rounded-[10px] text-white text-[20px] justify-center items-center "
+          >
+            LOGAR
+          </button>
+        </div>
         <Snackbar
           message={snackbar.message}
           type={snackbar.type}
@@ -95,26 +110,6 @@ export default function Login() {
             setSnackbar({ message: '', type: 'info', duration: 0 })
           }
         />
-        <img
-          src="/img/logo.png"
-          alt=""
-          className="w-[30%] h-[30%] absolute top-[-0.5%] left-[20%]"
-        />
-        <div className="barra w-[3px] h-[110px] bg-white absolute top-[5%] left-[52%]"></div>
-        <span className="text-[20px] text-white absolute top-[7%] left-[55%] font-chagaone h-[50x]">
-          ÁREA <br />
-          DE <br />
-          LOGIN
-        </span>
-        <a href="#" className="absolute top-[58%] left-[11%] font-gillsans ">
-          Esqueceu sua senha?
-        </a>
-        <h5 className="absolute top-[30%] left-[11%] font-[20px] font-gillsans text-white">
-          EMAIL
-        </h5>
-        <h4 className="absolute top-[45%] left-[11%] font-[20px] font-gillsans text-white ">
-          SENHA
-        </h4>
       </div>
     </div>
   );
